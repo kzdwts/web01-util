@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>日期函数</title>
+		<script src="../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/**
+			 * 将日期转为字符串格式：YYYYMMDDHHmmss
+			 * @param {Object} date
+			 */
+			function dateToString(date) {
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1;
+				var day = date.getDate();
+				var hour = date.getHours();
+				var minute = date.getMinutes();
+				var second = date.getSeconds();
+				month = month > 9 ? month : ('0' + month);
+				day = day > 9 ? day : ('0' + day);
+				hour = hour > 9 ? hour : ('0' + hour);
+				minute = minute > 9 ? minute : ('0' + minute);
+				second = second > 9 ? second : ('0' + second);
+				var dateTime = '' + year + month + day + hour + minute + second;
+				return dateTime;
+			}
+
+			/**
+			 * 获取下个月第一天
+			 */
+			function getNextMonthFirstDay() {
+				var d1 = new Date();
+				var currentMonth = d1.getMonth();
+				var nextMonth = ++currentMonth;
+				var nextMonthFirstDay = new Date(d1.getFullYear(), nextMonth, 1);
+				return nextMonthFirstDay;
+			}
+			
+			/**
+			 * 获取当月最后一天
+			 */
+			function getCurrentMonthLastDay() {
+				var d1 = new Date();
+				var currentMonth = d1.getMonth();
+				var nextMonth = ++currentMonth;
+				var nextMonthFirstDay = new Date(d1.getFullYear(), nextMonth, 1);
+				// var oneDay = 1000 * 60 * 60 * 24;
+				// return new Date(nextMonthFirstDay - oneDay);
+				return new Date(nextMonthFirstDay -1);
+			}
+		</script>
+	</head>
+
+	<body>
+		<div>
+			<button id="btn1">按钮一</button>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(function() {
+
+			$("#btn1").click(function() {
+				console.log(getNextMonthFirstDay());
+				var nextMonthFirstDay = dateToString(getNextMonthFirstDay());
+				console.log(nextMonthFirstDay);
+				console.log('-------------------');
+				var currentMonthLastDay = getCurrentMonthLastDay();
+				console.log(currentMonthLastDay);
+				console.log(dateToString(currentMonthLastDay));
+			});
+
+		});
+	</script>
+
+</html>
