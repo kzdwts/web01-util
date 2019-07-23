@@ -4,17 +4,26 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>解决IE不支持isArray方法</title>
-		<script src="../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>-->
 		<script type="text/javascript">
 			if(!Array.isArray) {
 				Array.isArray = function(arg) {
 					return Object.prototype.toString.call(arg) === '[object Array]';
 				};
 			}
+			
 		</script>
 	</head>
 
 	<body>
 	</body>
+	<script type="text/javascript">
+		var a = "";
+		if (a instanceof Array) {
+			console.log('a是数组');
+		} else {
+			console.log('a不是数组');
+		}
+	</script>
 
 </html>
