@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JS打开新窗口</title>
+		<script src="../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			/**
+			 * 打开新窗口全屏
+			 * @param {Object} owurl 新窗口地址
+			 */
+			function ow(owurl) {
+				var tmp = window.open('about:blank', '', 'fullscreen=1');
+				tmp.moveTo(0, 0);
+				tmp.resizeTo(screen.width, screen.height);
+				tmp.focus();
+				tmp.location = owurl;
+			}
+		</script>
+	</head>
+	<body>
+		<div class="mui-active">
+			<button id="btn1">点击打开新窗口</button>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(function() {
+			
+			/**
+			 * btn1点击事件
+			 */
+			$('#btn1').on('click', function() {
+				ow('http://www.kangyong.top');
+			});
+		});
+	</script>
+</html>
